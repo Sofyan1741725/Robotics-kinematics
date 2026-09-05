@@ -1,5 +1,5 @@
 import numpy as np
-from kinematics import kinematics
+from .kinematics import kinematics
 import matplotlib.pyplot as plt
 
 class MecanumKinematics(kinematics):

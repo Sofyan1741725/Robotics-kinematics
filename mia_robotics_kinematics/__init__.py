@@ -5,7 +5,7 @@ from .Robot_Kinematics.three_wheel import ThreeWheelKinematics
 from .Robot_Kinematics.four_wheel import FourWheelKinematics
 
 __all__ = [
-    'Kinematics',
+    'kinematics',
     'DiffDriveKinematics',
     'MecanumKinematics',
     'ThreeWheelKinematics',

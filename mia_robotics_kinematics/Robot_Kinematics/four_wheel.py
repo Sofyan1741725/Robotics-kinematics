@@ -1,7 +1,7 @@
 import numpy as np
-from mia_robotics_kinematics.Robot_Kinematics.kinematics import Kinematics
+from mia_robotics_kinematics.Robot_Kinematics.kinematics import kinematics
 
-class FourWheelKinematics(Kinematics):
+class FourWheelKinematics(kinematics):
     def __init__(self, L: float, W: float, R: float):
         super().__init__(L, W, R)
 
