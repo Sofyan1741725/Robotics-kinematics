@@ -95,3 +95,21 @@ class KinematicsNode(Node):
 
 
 
+# main function to run the node
+def main(args=None):
+
+    rclpy.init(args=args)
+
+    node = KinematicsNode()
+
+    rclpy.spin(node)
+
+    node.destroy_node()
+
+    rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()
+    
+
