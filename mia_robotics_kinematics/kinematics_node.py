@@ -64,8 +64,8 @@ class KinematicsNode(Node):
         self.subscription = self.create_subscription(
              Twist,
              '/cmd_vel',
-            self.cmd_vel_callback,
-            10
+             self.cmd_vel_callback,
+             10
         )
 
 
@@ -75,3 +75,23 @@ class KinematicsNode(Node):
            '/wheel_setpoints',
             10
         )
+
+
+
+    def cmd_vel_callback(self, msg):
+
+        vx = msg.linear.x
+        vy = msg.linear.y
+        wz = msg.angular.z
+
+        wheel_speeds = self.kinematics.inverse(vx, vy, wz)
+
+        output_msg = Float64MultiArray()
+        output_msg.data = wheel_speeds
+
+        self.publisher.publish(output_msg) 
+
+
+
+
+
