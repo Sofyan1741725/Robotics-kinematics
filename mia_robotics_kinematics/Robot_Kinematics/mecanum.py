@@ -18,7 +18,7 @@ class MecanumKinematics(kinematics):
         
 
 
-    def inverse(self,Vx,Vy,Wz):
+    def inverse(self,Vx: float,Vy: float,Wz: float) -> list:
 
         # w1> velocity in left wheel 
 
@@ -30,7 +30,7 @@ class MecanumKinematics(kinematics):
 
         return [w1,w2,w3,w4]
 
-    def forward(self,W):
+    def forward(self,W: list) -> tuple:
 
         w1 = W[0]
         w2 = W[1]
@@ -38,7 +38,7 @@ class MecanumKinematics(kinematics):
         w4 = W[3]
 
         Vx = self.R/4*(w1+w2+w3+w4)
-        Vy = self.R/4*(-w1+w2+w3+w4)
+        Vy = self.R/4*(-w1+w2+w3-w4)
         Wz = self.R/(4*(self.L+self.W))*(-w1+w2-w3+w4)
 
 

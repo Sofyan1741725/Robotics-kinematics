@@ -4,22 +4,25 @@ import matplotlib.pyplot as plt
 
 class DiffDriveKinematics(kinematics):
 
-    def __init__(self,L,W,R):
+
+    def __init__(self,L: float,W: float,R: float):
         super().__init__(L,W,R)
 
-        self.M_forward = np.array([[self.R/4,self.R/4,self.R/4,self.R/4],
-                                   [0,0,0,0],
-                                   [-self.R/(2*W),self.R/(2*W),self.R/(2*W),-self.R/(2*W)]])
+        self.M_forward = np.array([
+            [self.R / 4.0,self.R / 4.0,self.R / 4.0,self.R / 4.0],
+            [0.0, 0.0, 0.0, 0.0],
+            [- self.R / (2.0 * self.W), self.R / (2.0 * self.W), self.R / (2.0 * self.W), - self.R / (2.0 * self.W)]
+            ], dtype=np.float64)
 
-        self.M_inverse = np.array([[1/R,0,-self.W/(2*R)],
-                                   [1/R,0,self.W/(2*R)],
-                                   [1/R,0,self.W/(2*R)],
-                                   [1/R,0,-self.W/(2*R)]])
+        self.M_inverse = np.array([
+            [1 / self.R, 0.0, - self.W / (2 * self.R)],
+            [1 / self.R, 0.0, self.W / (2 * self.R)],
+            [1 / self.R, 0.0, self.W / (2 * self.R)],
+            [1 / self.R, 0.0, - self.W / (2 * self.R)]
+            ], dtype=np.float64)
         
 
-
-    def inverse(self,Vx,Vy,Wz):
-
+    def inverse(self,Vx: float,Vy: float,Wz: float) -> list:
         # i considered the robot has two wheels
         # w1> velocity in left wheel 
 
